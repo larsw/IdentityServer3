@@ -602,6 +602,8 @@ namespace IdentityServer3.Core
             public const string IdentityServerHost     = "idsrv:IdentityServerHost";
 
             public const string RequestId    = "idsrv:RequestId";
+            
+            public const string SslClientCertificate = "ssl.ClientCertificate";
         }
         
         public static class Authentication
