@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Security.Cryptography.X509Certificates;
 
 namespace IdentityServer3.Core.Extensions
 {
@@ -479,6 +480,22 @@ namespace IdentityServer3.Core.Extensions
                 return value as string;
             }
 
+            return null;
+        }
+        
+        /// <summary>
+        /// Gets the client certificate if available.
+        /// </summary>
+        /// <param name="env">The OWIN environment.</param>
+        /// <returns>The client certificate if available, else null.</returns>
+        public static X509Certificate2 GetClientCertificate(this IDictionary<string, object> env)
+        {
+            object value;
+            if (env.TryGetValue(Constants.OwinEnvironment.SslClientCertificate, out value))
+            {
+                return value as X509Certificate2;
+            }
+            
             return null;
         }
     }
